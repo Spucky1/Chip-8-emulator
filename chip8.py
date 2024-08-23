@@ -16,7 +16,8 @@ class chip8:
         self.opcode
 rom = False
 
-Start_Address = 0x200
+
+start_address = 0x200
 
 def chip8__Loadrom(name, path):
     for root, dirs, files in os.walk(path):
@@ -25,6 +26,14 @@ def chip8__Loadrom(name, path):
             rom = True
 if rom == True:
     os.open()
+    def getsize(name):
+         st = os.stat(name)
+         st.st_size = buffer[0]
+
+    
+
+    
+
 
 
 
