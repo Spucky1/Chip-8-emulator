@@ -14,6 +14,12 @@ class chip8:
         self.keypad = [16]
         self.video[64*32]
         self.opcode
+    
+START_ADDRES = int(0x200)
+
+def loadrom_chip8():
+    
+
 
     
     
