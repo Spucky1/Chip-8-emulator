@@ -1,4 +1,4 @@
-
+import os
 
 
 class chip8:
@@ -16,8 +16,24 @@ class chip8:
         self.opcode
     
 START_ADDRES = int(0x200)
-
 def loadrom_chip8():
+    findrom()
+   
+   
+   
+   
+   
+def findrom(name, ):
+        for root, dirs, files, in os.walk(path):
+            if name in files:
+                return os.path.join(root, name)
+                
+    
+    
+        
+    
+
+
     
 
 
