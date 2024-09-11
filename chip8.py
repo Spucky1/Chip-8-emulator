@@ -17,16 +17,27 @@ class chip8:
     
 START_ADDRES = int(0x200)
 def loadrom_chip8():
-    findrom()
+    findrom_chip8("Airplane.ch8")
+    
+
    
    
    
    
    
-def findrom(name, ):
-        for root, dirs, files, in os.walk(path):
-            if name in files:
-                return os.path.join(root, name)
+def findrom_chip8(rom_name, emulator):
+        for root, dirs, files, in os.walk(emulator):
+            if rom_name in files:
+                return os.path.join(root, rom_name)
+                with open(rom_name, "f")as f:
+                     contents = function(f)
+                     
+                     
+
+                     
+                     
+                     
+                          
                 
     
     
@@ -39,7 +50,3 @@ def findrom(name, ):
 
     
     
-
-
-
-
