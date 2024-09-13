@@ -1,5 +1,6 @@
 import os
 from os import path
+print("script is running")
 
 
 class chip8:
@@ -17,15 +18,23 @@ class chip8:
         self.opcode
     
 START_ADDRES = int(0x200)
-
 def findrom_chip8(rom_name, path):
         for root, dirs, files, in os.walk(path):
             if rom_name in files:
-                return os.path.join(root, rom_name)
+                os.path.join(root, rom_name)
                 with open(rom_name, "f")as f:
                      contents = function(f)
 def loadrom_chip8():
-    findrom_chip8("Airplane.ch8", "./")
+     print("room is loading")
+def main():
+     findrom_chip8("Airplane.ch8","./")
+     loadrom_chip8()
+     
+
+
+
+
+    
 
     
     
