@@ -22,13 +22,15 @@ def findrom_chip8(rom_name, path):
         for root, dirs, files, in os.walk(path):
             if rom_name in files:
                 os.path.join(root, rom_name)
-                with open(rom_name, "f")as f:
-                     contents = function(f)
+                with open(rom_name, "r")as r:
+                     contents = os.path.getsize(path)
+                     print(contents)
 def loadrom_chip8():
      print("room is loading")
 def main():
      findrom_chip8("Airplane.ch8","./")
      loadrom_chip8()
+main()
      
 
 
