@@ -1,41 +1,40 @@
 import os
-from os import path
+import textwrap
 import binascii
-print("script is running")
 
 
+START_ADDRESS = 0x200
 class chip8:
     def __init__(self):
         self.registers = [16]
         self.memory = [4096]
-        self.index
-        self.pc
+        self.index = 0
+        self.pc = 0
         self.stack = [16]
-        self.sp 
-        self.delaytimer
-        self.soundtimer
+        self.sp = 0
+        self.timer = 0
+        self.delaytimer = 0
+        self.soundtimer = 0
         self.keypad = [16]
-        self.video[64*32]
-        self.opcode
+        self.video = [64*32]
+        self.opcode = None
 
 
     
-START_ADDRES = int(0x200)
-def findrom_chip8(rom_name, path):
-        for root, dirs, files, in os.walk(path):
-            if rom_name in files:
-                os.path.join(root, rom_name)
-                with open(rom_name, "rb")as r:
-                    hexdata = binascii.hexlify(r.read())
-                    print(hexdata)
+
+    def loadrom_chip8(self, rom_path):
+        with open(rom_path, "rb")as r:
+            hexdata = textwrap.wrap(str(binascii.hexlify(r.read())),2)
+            hexdata.pop()
+            hexdata.pop(0)
+            print(START_ADDRESS)
+            
                     
-                    
-def loadrom_chip8():
-     print("room is loading")
-def main():
-     findrom_chip8("Airplane.ch8","./")
+emulator = chip8()                    
+emulator.loadrom_chip8("Airplane.ch8")
+     
     
-main()
+
      
 
 
