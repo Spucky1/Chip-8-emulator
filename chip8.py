@@ -7,7 +7,7 @@ START_ADDRESS = 0x200
 class chip8:
     def __init__(self):
         self.registers = [16]
-        self.memory = [4096]
+        self.memory = [None] * 4096
         self.index = 0
         self.pc = 0
         self.stack = [16]
@@ -28,6 +28,13 @@ class chip8:
             hexdata.pop()
             hexdata.pop(0)
             print(START_ADDRESS)
+            for i in range(len(hexdata)):
+                self.memory[START_ADDRESS + i] = hexdata[i]
+
+            
+
+            print(self.memory)
+
             
                     
 emulator = chip8()                    
