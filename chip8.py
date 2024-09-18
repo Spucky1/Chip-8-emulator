@@ -43,7 +43,9 @@ class chip8:
     def Chip8_chip8(self):
          self.pc = START_ADDRESS
 
-    def OP_00E_chip8():
+    def OP_00E_chip8(self):
+        self.sp -=self.sp
+        self.pc= self.stack[self.sp]
          
          
     def loadrom_chip8(self, rom_path):
