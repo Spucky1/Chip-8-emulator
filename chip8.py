@@ -51,8 +51,8 @@ class chip8:
             for i in range(len(hexdata)):
                 self.memory[START_ADDRESS + i] = hexdata[i]
     def loadfont_chip8(self):
-            for x in range(FONTSET_SIZE):
-                 self.memory[FONTSET_START_ADRESS + x] = fontset[x]
+            for i in range(FONTSET_SIZE):
+                 self.memory[FONTSET_START_ADRESS + i] = fontset[i]
                  print(self.memory)
 
             
