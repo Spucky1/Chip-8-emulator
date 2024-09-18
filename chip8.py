@@ -46,6 +46,24 @@ class chip8:
     def OP_00E_chip8(self):
         self.sp -=self.sp
         self.pc= self.stack[self.sp]
+        print(self.pc)
+    
+    def OP_1nnn_chip8(self):
+         address = self.opcode & 0x0FFF
+         self.pc = address
+    
+    def OP_2NNN_chip8(self):
+         address = self.opcode & 0x0FFF
+         self.stack[self.sp] =  self.pc
+         self.sp += self.sp
+         self.pc= address
+    
+    
+    
+
+         
+
+         
          
          
     def loadrom_chip8(self, rom_path):
