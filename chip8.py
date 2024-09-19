@@ -119,7 +119,16 @@ class chip8:
          
          self.registers[Vx] = sum & 0X0FF
          
-
+    def OP_8xy5_chip8(self):
+         Vx = (self.opcode & 0x0F00) >> 8
+         Vy = (self.opcode & 0x00F0) >> 4
+         if self.register[Vx]> self.registers[Vy]:
+              self.register[0xF] = 1
+         else:
+              self.register[0xf] =0
+         self.registers[Vx] -= self.register[Vy]
+    
+          
 
     def loadrom_chip8(self, rom_path):
         with open(rom_path, "rb")as r:
