@@ -62,9 +62,20 @@ class chip8:
          Vx = (self.opcode & 0x0F00) >> 8
          Byte = self.opcode & 0x00FF
          if self.registers[Vx] == Byte:
-              self.pc += self.pc
+              self.pc = self.pc + 2
+
+    def OP_4xkk_chip8(self):
+        Vx = (self.opcode & 0x0F00) >> 8
+        Byte = self.opcode & 0x00FF
+        if self.registers[Vx] != Byte:
+              self.pc = self.pc + 2 
     
-    
+    def OP_5xy0_chip8(self):
+         Vx = (self.opcode & 0x0F00) >> 8
+         Vy = self.opcode & 0x00F0
+         if self.register[Vx] == self.registers[Vy]:
+              self.pc = self.pc + 2 
+         
     
     def loadrom_chip8(self, rom_path):
         with open(rom_path, "rb")as r:
