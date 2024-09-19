@@ -51,21 +51,21 @@ class chip8:
     def OP_1nnn_chip8(self):
          address = self.opcode & 0x0FFF
          self.pc = address
-    
-    def OP_2NNN_chip8(self):
+
+    def OP_2nnn_chip8(self):
          address = self.opcode & 0x0FFF
          self.stack[self.sp] =  self.pc
          self.sp += self.sp
          self.pc= address
-    
-    
-    
 
-         
-
-         
-         
-         
+    def OP_3xkk_chip8(self):
+         Vx = (self.opcode & 0x0F00) >> 8
+         Byte = self.opcode & 0x00FF
+         if self.registers[Vx] == Byte:
+              self.pc += self.pc
+    
+    
+    
     def loadrom_chip8(self, rom_path):
         with open(rom_path, "rb")as r:
             hexdata = textwrap.wrap(str(binascii.hexlify(r.read())),2)
@@ -79,20 +79,10 @@ class chip8:
             for i in range(FONTSET_SIZE):
                  self.memory[FONTSET_START_ADRESS + i] = fontset[i]
     
- 
-    
-  
-        
-            
-
-          
-
-            
-                    
 emulator = chip8()                    
 emulator.loadrom_chip8("Airplane.ch8")
 emulator.loadfont_chip8()
-emulator.OP00E_chip8()
+emulator.OP_00E_chip8()
 
 
      
