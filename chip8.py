@@ -96,7 +96,28 @@ class chip8:
     def OP_8xy1_chip8(self):
          Vx = (self.opcode & 0x0F00) >> 8
          Vy = (self.opcode & 0x00F0) >> 4
-         self.register[Vx] !=  self.registers[Vy]
+         self.register[Vx] |=  self.registers[Vy]
+         
+    def OP_8xy2_chip8(self):
+         Vx = (self.opcode & 0x0F00) >> 8
+         Vy = (self.opcode & 0x00F0) >>4
+         self.register[Vx] &= self.registers[Vy]
+     
+    def OP_8xy3_chip8(self):
+         Vx= (self.opcode & 0x0F00) >>8
+         Vy = (self.opcode & 0x00F0) >> 4
+         self.register[Vx] ^= self.registers[Vy]
+
+    def OP_8xy4_chip8(self):
+         Vx = (self.opcode & 0x0F00) >> 8
+         Vy = (self.opcode & 0x00F0) >> 4
+         sum = self.register[Vx] + self.registers[Vy]
+         if sum  > 255:
+              self.registers[0xF] = 1
+         else:
+              self.registers[0xF] =0
+         
+         self.registers[Vx] = sum & 0X0FF
          
 
 
