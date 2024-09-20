@@ -125,9 +125,38 @@ class chip8:
          if self.register[Vx]> self.registers[Vy]:
               self.register[0xF] = 1
          else:
-              self.register[0xf] =0
+              self.register[0xF] =0
          self.registers[Vx] -= self.register[Vy]
     
+    def OP_8xy6_chip8(self):
+         Vx = (self.opcode & 0x0F00) >>8
+         self.registers[0xF] = (self.registers[Vx] & 0x1)
+         self.registers[Vx] >>= 1
+   
+    def OP_8xy7_chip8(self):
+         Vx = (self.opcode & 0x0F00) >>8
+         Vy = (self.opcode & 0x00F0) >>4
+
+         if self.registers[Vx] >> self.registers[Vy]:
+              self.registers[0xF] = 1
+         else:
+              self.registers[0xF] =0
+          
+         self.registers[Vx] = self.registers[Vy] - self.registers[Vx]
+     
+    def OP_8xyE_chip8(self):
+         Vx = (self.opcode & 0x0F00) >>8
+
+         self.registers[0xF] = (self.registers[Vx] & 0x80) >> 7
+         self.registers[Vx] >>= 1
+     
+    def OP_9xy0_(self):
+         Vx = (self.opcode & 0x0F00) >>8
+         Vy = (self.opcode & 0x00F0) >>4
+         if self.registers[Vx] != self.registersr[Vy]:\
+               pc += 2
+     
+         
           
 
     def loadrom_chip8(self, rom_path):
