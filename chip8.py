@@ -155,10 +155,29 @@ class chip8:
          Vy = (self.opcode & 0x00F0) >>4
          if self.registers[Vx] != self.registersr[Vy]:\
                pc += 2
+    
+    def OP_Annn_chip8(self):
+         address = self.opcode & 0x0FFF
+         self.index = address
+  
+    def OP_Bnnn_chip8(self):
+         address = self.opcode & 0x0FFF
+
+         self.pc = self.registers[0] +address
+
+    def OP_Cxkk_chip8(self):
+         Vx = (self.opcode & 0x0F00) >> 8
+         Byte = self.opcode & 0x00FF
+         self.registers[Vx] = random.randbytes(1) & Byte
+
+    def OP_Dxyn_chip8(self):
+         Vx = (self.opcode & 0x0F00) >> 8
+         Vy = (self.opcode & 0x00F0) >> 4
+         height = self.opcode & 0x000F
+         
+
      
          
-          
-
     def loadrom_chip8(self, rom_path):
         with open(rom_path, "rb")as r:
             hexdata = textwrap.wrap(str(binascii.hexlify(r.read())),2)
