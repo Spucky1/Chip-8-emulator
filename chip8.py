@@ -43,7 +43,7 @@ class chip8:
         self.opcode = None
     
     def Chip8_chip8(self):
-         self.pc = START_ADDRESS
+         self.pc = int(START_ADDRESS)
 
     def OP_00E_chip8(self):
         self.sp -=self.sp
@@ -174,6 +174,10 @@ class chip8:
          Vx = (self.opcode & 0x0F00) >> 8
          Vy = (self.opcode & 0x00F0) >> 4
          height = self.opcode & 0x000F
+
+         xPos = self.registers[Vx] 
+         yPos = self.registers[Vy] 
+
          
 
      
