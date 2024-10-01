@@ -39,11 +39,14 @@ class chip8:
         self.delaytimer = 0
         self.soundtimer = 0
         self.keypad = [16]
-        self.video = [[0 for x in range(64)]for y in range(32)]
+        self.video = [[0 for VIDEO_HEIGHT in range(64)]for VIDEO_WIDTH in range(32)]
         self.opcode = None
     
     def Chip8_chip8(self):
          self.pc = int(START_ADDRESS)
+     
+    def clear_screen_chip8(self):
+         self.video
 
     def OP_00E_chip8(self):
         self.sp -=self.sp
@@ -175,8 +178,10 @@ class chip8:
          Vy = (self.opcode & 0x00F0) >> 4
          height = self.opcode & 0x000F
 
-         xPos = self.registers[Vx] 
-         yPos = self.registers[Vy] 
+         xPos = self.registers[Vx] % self.VIDEO_HEIGHT
+         yPos = self.registers[Vy] % self.VIDEO_WIDTH
+
+         
 
          
 
