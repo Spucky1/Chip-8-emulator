@@ -182,7 +182,9 @@ class chip8:
          Vy = (self.opcode & 0x00F0) >> 4
 
          self.register[0xF] = 0
-         
+
+         spriteByte = self.memory[self.index]
+
          
 
          
